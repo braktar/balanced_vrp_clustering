@@ -70,7 +70,7 @@ module OverloadableFunctions
     strict_limits = vehicles_infos.collect{ |cluster|
       s_l = { duration: cluster[:total_work_time], visits: cumulated_metrics[:visits] }
       cumulated_metrics.each{ |unit, _total_metric|
-        s_l[unit] = ((cluster[:capacities].any?{ |capacity| capacity[:unit_id] == unit }) ? cluster[:capacities].find{ |capacity| capacity[:unit_id] == unit }[:limit] : 0)
+        s_l[unit] = ((cluster[:capacities].has_key? unit) ? cluster[:capacities][unit] : 0)
       }
       s_l
     }
