@@ -265,7 +265,6 @@ module Ai4r
 
             @data_set.data_items.insert(0, @data_set.data_items.delete(item))
           end
-          log "kmeans_centroids: #{@centroids.collect{ |centroid| centroid[2] }.flatten}", level: :debug
         end
         @number_of_clusters = @centroids.length
       end
